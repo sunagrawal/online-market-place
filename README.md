@@ -203,7 +203,8 @@ How to run?
  1. Open browser and type http://localhost:3000/
  Note - I'm assuming you have already configured and linked meta mask to your local block chain using the seed from the output of 
  ganahce-cli.
- 2. The page should automatically recongnise you as admin (if you are using the same account on meta mask that's used for contract  deployment).
+ 2. The page should automatically recongnise you as admin (if you are using the same account on meta mask that's used for 
+ contract  deployment).
  
  NOTE - I haven't managed to finish the UI completely due to some unplanned travel during the course. So the UI functionality is 
  very limited and bare bone to demostrate the concept that you can call the contract function from the web based application.
