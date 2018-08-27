@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Online Market Place</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+          <h1 class="text-center">Online Market Place</h1><p></p>
+          <h2 id="WelcomeMessage"></h2>
+          <br/>
+        </div>
+      </div>
+
+      <div id="storesRow" class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+
+          <label for="FirstName">First Name</label>
+          <input id="FirstNameText" type="text"/><br/><br/>
+          <label for="LastName">Last Name</label>
+          <input id="LastNameText" type="text"/><br/><br/>
+          <label for="EmailAddress">Email</label>
+          <input id="EmailAddressText" type="text"/><br/><br/>
+          <button class="btn btn-default btn-register" type="button" id="registerButton">Register Store Admin</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+</html>
