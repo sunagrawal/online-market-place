@@ -18,7 +18,7 @@ What's implemented?
 2. 5 Test cases
 3. Use a Library (a very simple library just to prove the point that it works)
 4. Emergency break functionality (only supported for admin)
-5. UI (very limited functionality only for Admin, so far)
+5. UI to show Admin, Owner and Buyer functionality. Note this is not pretty and bare bones but works :)
 
 
 How to run?
