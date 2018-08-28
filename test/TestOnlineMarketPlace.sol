@@ -11,7 +11,7 @@ contract TestOnlineMarketPlace {
     function testStoreAdminRegistration() public {
         OnlineMarketPlace onlineMarketPlace = new OnlineMarketPlace();
 
-        bool returnedStatus = onlineMarketPlace.registerStoreAdminDetails("Sunil", "Agrawal", "sunil@gmail.com");
+        bool returnedStatus = onlineMarketPlace.registerStoreAdminDetails("Sunil", "Agrawal", "sunil@gmail.com", false);
         bool expectedStatus = true;
         
         Assert.equal (returnedStatus, expectedStatus, "Registering store admin check failed.");

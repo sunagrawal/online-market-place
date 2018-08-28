@@ -66,7 +66,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
     
     /* Buy the product */
     function buyProduct(address _storeOwnerAddress, uint _productCode, uint _quantity, string _firstName, string _lastName, 
-            string _derliveryAddress) payable public returns (bool) {
+            string _derliveryAddress) payable public stopInEmergency() returns (bool) {
        
         // Get the list of products from the store
         product[] storage listOfProducts = storeOwnerProducts[_storeOwnerAddress];
@@ -102,7 +102,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
     }
     
     /* Change the product price */
-    function changeProductPrice(uint _productCode, uint _newPrice) public returns (bool) {
+    function changeProductPrice(uint _productCode, uint _newPrice) public stopInEmergency() returns (bool) {
         // Get the list of products for this store owner
         product[] storage listOfProducts = storeOwnerProducts[msg.sender];
 
@@ -118,7 +118,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
     }
 
     /* Add a new product to the store owner */
-    function addProduct(uint _productCode, uint _price, uint _quantity) public returns (bool) {
+    function addProduct(uint _productCode, uint _price, uint _quantity) public stopInEmergency() returns (bool) {
         
         // Check to ensure store admin can not any products
         require( msg.sender != storeAdminAddress,  "Only store owner can call this function." );
@@ -138,7 +138,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
     }
 
     /* Remove existing product from the store owner */
-    function removeProduct(uint _productCode) public returns (bool) {
+    function removeProduct(uint _productCode) public stopInEmergency() returns (bool) {
 
         // Get the list of products for this store owner
         product[] storage listOfProducts = storeOwnerProducts[msg.sender];
@@ -199,7 +199,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
     }
 
     /* This function will allow store admin to new store owners */
-    function addStoreOwner(address _storeOwnerAddress, string _firstName, string _lastName, string _emailAddress) public isStoreAdmin() returns (address){ 
+    function addStoreOwner(address _storeOwnerAddress, string _firstName, string _lastName, string _emailAddress) public isStoreAdmin() stopInEmergency() returns (address){ 
         
         // Check to ensure store admin is not store owner
         require(msg.sender != _storeOwnerAddress, "Store admin can't be a store owner!");
@@ -215,7 +215,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
     }
 
     /* Get store owner details */
-    function getStoreOwnerDetails(address _storeOwnerAddress) public constant returns(address, string, string, string) {
+    function getStoreOwnerDetails(address _storeOwnerAddress) public view returns(address, string, string, string) {
         return (storeOwners[_storeOwnerAddress].userAddress, storeOwners[_storeOwnerAddress].firstName, 
                 storeOwners[_storeOwnerAddress].lastName, storeOwners[_storeOwnerAddress].emailAddress);
     }

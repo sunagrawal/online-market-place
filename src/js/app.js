@@ -42,7 +42,12 @@ App = {
       alert("Get store admin details function called from address [" + web3.eth.defaultAccount + "]");
     }).then(function(result) {
         if (result[0] == web3.eth.defaultAccount) {
-          $('#WelcomeMessage').text("Welcome Store Admin - " + result[1] + " " + result[2] + "!" + "\nAdmin Address ["+ result[0] + "]");
+          $('#WelcomeMessage').text("Welcome Store Admin!!!");
+          document.getElementById("AdminAddressText").value = result[0];
+          document.getElementById("FirstNameText").value = result[1];
+          document.getElementById("LastNameText").value = result[2];
+          document.getElementById("EmailAddressText").value = result[3];
+          document.getElementById("EmergencyStopText").value = result[4];
         }
     }).catch(function(err) {
       console.log(err.message);
@@ -57,10 +62,14 @@ App = {
 
       App.contracts.OnlineMarketPlace.deployed().then(function(instance) {
         var onlineMarketPlaceInstance = instance;
- 
+
+        // Convert the emergency stop text field to boolean
+        var stopped = document.getElementById("EmergencyStopText").value;
+        var boolValue = JSON.parse(stopped); 
+        
         // Execute adopt as a transaction by sending account
         return onlineMarketPlaceInstance.registerStoreAdminDetails(document.getElementById("FirstNameText").value, 
-            document.getElementById("LastNameText").value, document.getElementById("EmailAddressText").value, {from: web3.eth.defaultAccount});
+            document.getElementById("LastNameText").value, document.getElementById("EmailAddressText").value, boolValue, {from: web3.eth.defaultAccount});
       }).then(function(result) {
         // $('#registerButton').text('Success').attr('disabled', true);
         return App.markRegistered();
