@@ -117,7 +117,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
             }
         }
         
-        require(false, "No such produce found");
+        require(false, "No such product found");
     }
 
     /* Add a new product to the store owner */
@@ -165,7 +165,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
             }
         }
         
-        require(false, "No such produce found");
+        require(false, "No such product found");
     }
 
     /* Get all the product for the store owner */
