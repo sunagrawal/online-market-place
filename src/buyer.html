@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <style type="text/css">
+      label {
+          display:inline-block;
+          padding-top: 5px;
+          text-align: left;
+          width: 175px;
+      }
+  
+      button {
+          background-color: #008CBA; /* Green */
+          border: black;
+          color:white;
+          padding: 15px 32px;
+          text-align: left;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 18px;
+      } 
+    </style>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Online Market Place</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8 col-sm-8 col-sm-push-2">
+          <h1>Buy Product</h1><p>
+          <h1 id="BuyProductWelcomeMessage"></h1>
+        </div>
+      </div>
+      <div id="productRow" class="row">
+        <div class="col-xs-8 col-sm-8 col-sm-push-2">
+          <label for="StoreOwnerAddress">Store Owner Address</label>
+          <input id="StoreOwnerAddressText" type="text" size="45"/><br/>
+          <label for="ProductCode">Product Id</label>
+          <input id="ProductCodeText" type="text" size="45"/><br/>
+          <label for="Quantity">Quantity</label>
+          <input id="QuantityText" type="text" size="45"/><br/>
+          <label for="BuyerFirstName">Buyer First Name</label>
+          <input id="BuyerFirstNameText" type="text" size="45"/><br/>
+          <label for="BuyerLastName">Buyer Last Name</label>
+          <input id="BuyerLastNameText" type="text" size="45"/><br/>
+          <label for="BuyerShippingAddress">Buyer Shipping Address</label>
+          <input id="BuyerShippingAddressText" type="text" size="45"/><br/>
+          <button class="btn" type="button" id="buyProductButton" onclick="App.handleBuyProduct()">Buy Product</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/buyer.app.js"></script>
+
+  </body>
+</html>

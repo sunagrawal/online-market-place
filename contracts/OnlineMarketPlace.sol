@@ -103,6 +103,9 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
     
     /* Change the product price */
     function changeProductPrice(uint _productCode, uint _newPrice) public stopInEmergency() returns (bool) {
+        // Check to ensure that the price is greater than 0
+        require (_newPrice > 0, "Price must be great than 0");
+
         // Get the list of products for this store owner
         product[] storage listOfProducts = storeOwnerProducts[msg.sender];
 
@@ -114,7 +117,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
             }
         }
         
-        return false;
+        require(false, "No such produce found");
     }
 
     /* Add a new product to the store owner */
@@ -122,6 +125,15 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
         
         // Check to ensure store admin can not any products
         require( msg.sender != storeAdminAddress,  "Only store owner can call this function." );
+
+        // Check to ensure that the product code is greater than 0
+        require (_productCode > 0, "ProductCode must be great than 0");
+
+        // Check to ensure that the price is greater than 0
+        require (_price > 0, "Price must be great than 0");
+
+        // Check to ensure that the quantity is greater than 0
+        require (_quantity > 0, "Quantity must be great than 0");
 
         // Get the list of products for this store owner
         product[] storage listOfProducts = storeOwnerProducts[msg.sender];
@@ -153,7 +165,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
             }
         }
         
-        return false;
+        require(false, "No such produce found");
     }
 
     /* Get all the product for the store owner */
@@ -173,6 +185,7 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
 
     /* Check the availability of the product for the store owner */
     function getProductDetails(uint _productCode) public view returns(address, uint, uint, uint) { 
+        // Check to see if this product exists
         require (checkProductAvailability(_productCode), "No such product found");
         
         product[] memory listOfProducts = storeOwnerProducts[msg.sender];

@@ -27,13 +27,6 @@ App = {
       // Use our contract to register store admin
       return App.markRegistered();
     });
-
-    return App.bindEvents();
-  },
-
-  bindEvents: function() {
-    $(document).on('click', '.btn-register', App.handleRegistered);
-    // $(document).on('click', '.btn-addStoreOwner', App.handleAddStoreOwner);
   },
 
   markRegistered: function() {
@@ -48,18 +41,20 @@ App = {
           document.getElementById("LastNameText").value = result[2];
           document.getElementById("EmailAddressText").value = result[3];
           document.getElementById("EmergencyStopText").value = result[4];
+        } else {
+          window.location.href = "storeowner.html";
         }
     }).catch(function(err) {
       console.log(err.message);
     });
-  },
+  },  
 
   handleRegistered: function() {
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
         console.log(error);
       }
-      alert(1);
+ 
       App.contracts.OnlineMarketPlace.deployed().then(function(instance) {
         var onlineMarketPlaceInstance = instance;
 
@@ -71,7 +66,6 @@ App = {
         return onlineMarketPlaceInstance.registerStoreAdminDetails(document.getElementById("FirstNameText").value, 
             document.getElementById("LastNameText").value, document.getElementById("EmailAddressText").value, boolValue, {from: web3.eth.defaultAccount});
       }).then(function(result) {
-        // $('#registerButton').text('Success').attr('disabled', true);
         return App.markRegistered();
       }).catch(function(err) {
         console.log(err.message);

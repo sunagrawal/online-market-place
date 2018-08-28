@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+  <style type="text/css">
+    label {
+        display:inline-block;
+        padding-top: 5px;
+        text-align: left;
+        width: 200px;
+    }
+
+    button {
+        background-color: #008CBA; /* Green */
+        border: black;
+        color:white;
+        padding: 15px 32px;
+        text-align: left;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+    } 
+  </style>
+    ​
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,65 +35,61 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-push-2">
-          <h1 class="text-center">Online Market Place</h1><p>
-          <h2 id="WelcomeMessage"></h2>
-          <br/>
+        <div class="col-xs-8 col-sm-8 col-sm-push-2">
+          <h1 class="text-center">Online Market Place</h1>
+          <h1 id="WelcomeMessage"></h1>
         </div>
       </div>
-
       <div id="storesRow" class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-push-2">
-
-          <label for="AdminAddress">Store Admin Address</label>
+        <div class="col-xs-8 col-sm-8 col-sm-push-2">
+          <label for="AdminAddress" size="45">Store Admin Address</label>
           <input id="AdminAddressText" type="text" size="45"/><br/>
-          <label for="FirstName">First Name</label>
-          <input id="FirstNameText" type="text"/><br/>
+          <label for="FirstName" size="45">First Name</label>
+          <input id="FirstNameText" type="text" size="45"/><br/>
           <label for="LastName">Last Name</label>
-          <input id="LastNameText" type="text"/><br/>
+          <input id="LastNameText" type="text" size="45"/><br/>
           <label for="EmailAddress">Email</label>
-          <input id="EmailAddressText" type="text" size="35"/><br/>
+          <input id="EmailAddressText" type="text" size="45"/><br/>
           <label for="EmergencyStop">Emergency Stop (true/flase)</label>
-          <input id="EmergencyStopText" type="text"/><br/>
-          <button class="btn btn-default btn-register" type="button" id="registerButton">Register Store Admin</button>
+          <input id="EmergencyStopText" type="text" size="45"/><br/>
+          <button class="btn" type="button" id="registerButton" onclick="App.handleRegistered()">Register Store Admin</button>
         </div>
       </div>
+
+      <br/><br/>
 
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-push-2">
-          <h1 class="text-center">Add Store Owner</h1><p>
+        <div class="col-xs-8 col-sm-8 col-sm-push-2">
+          <h1>Add Store Owner</h1>
           <h2 id="StoreOwnerMessage"></h2>
-          <br/>
         </div>
       </div>
-
       <div id="storesRow" class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-push-2">
-
+        <div class="col-xs-8 col-sm-8 col-sm-push-2">
           <label for="StoreOwnerAddress">Store Owner Address</label>
           <input id="StoreOwnerAddressText" type="text" size="45"/><br/>
           <label for="StoreOwnerFirstName">First Name</label>
-          <input id="StoreOwnerFirstNameText" type="text"/><br/>
+          <input id="StoreOwnerFirstNameText" type="text" size="45"/><br/>
           <label for="StoreOwnerLastName">Last Name</label>
-          <input id="StoreOwnerLastNameText" type="text"/><br/>
+          <input id="StoreOwnerLastNameText" type="text" size="45"/><br/>
           <label for="StoreOwnerEmailAddress">Email</label>
-          <input id="StoreOwnerEmailAddressText" type="text" size="35"/><br/>
-          <button class="btn btn-default btn-addStoreOwner" type="button" id="addStoreOwnerButton" onclick="App.handleAddStoreOwner()">Add Store Owner</button>
+          <input id="StoreOwnerEmailAddressText" type="text" size="45"/><br/>
+          <button class="btn" type="button" id="addStoreOwnerButton" onclick="App.handleAddStoreOwner()">Add Store Owner</button>
         </div>
       </div>
     </div>
 
+    <br/><br/>
+
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-push-2">
-        <h1 class="text-center">List All Store Owner</h1><p>
-        <br/>
+      <div class="col-xs-8 col-sm-8 col-sm-push-2">
+        <h1>Show All Store Owner</h1>
       </div>
     </div>
-
     <div id="storesRow" class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-push-2">
-        <button class="btn btn-default btn-listStoreOwner" type="button" id="listStoreOwnerButton" onclick="App.handleGetAllStoreOwners()">Show All Store Owner</button><br>
-        <textarea id="StoreOwnerAddressTextArea" rows="6" cols="100"\></textarea>
+      <div class="col-xs-8 col-sm-8 col-sm-push-2">
+        <textarea id="StoreOwnerAddressTextArea" rows="6" cols="80"\></textarea><br/>
+        <button class="btn" type="button" id="listStoreOwnerButton" onclick="App.handleGetAllStoreOwners()">Show All Store Owner</button><br>
       </div>
     </div>
   </div>
