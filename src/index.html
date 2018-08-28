@@ -16,7 +16,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-push-2">
-          <h1 class="text-center">Online Market Place</h1><p></p>
+          <h1 class="text-center">Online Market Place</h1><p>
           <h2 id="WelcomeMessage"></h2>
           <br/>
         </div>
@@ -26,19 +26,57 @@
         <div class="col-xs-12 col-sm-8 col-sm-push-2">
 
           <label for="AdminAddress">Store Admin Address</label>
-          <input id="AdminAddressText" type="text" size="45"/><br/><br/>
+          <input id="AdminAddressText" type="text" size="45"/><br/>
           <label for="FirstName">First Name</label>
-          <input id="FirstNameText" type="text"/><br/><br/>
+          <input id="FirstNameText" type="text"/><br/>
           <label for="LastName">Last Name</label>
-          <input id="LastNameText" type="text"/><br/><br/>
+          <input id="LastNameText" type="text"/><br/>
           <label for="EmailAddress">Email</label>
-          <input id="EmailAddressText" type="text" size="35"/><br/><br/>
+          <input id="EmailAddressText" type="text" size="35"/><br/>
           <label for="EmergencyStop">Emergency Stop (true/flase)</label>
-          <input id="EmergencyStopText" type="text"/><br/><br/>
+          <input id="EmergencyStopText" type="text"/><br/>
           <button class="btn btn-default btn-register" type="button" id="registerButton">Register Store Admin</button>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+          <h1 class="text-center">Add Store Owner</h1><p>
+          <h2 id="StoreOwnerMessage"></h2>
+          <br/>
+        </div>
+      </div>
+
+      <div id="storesRow" class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+
+          <label for="StoreOwnerAddress">Store Owner Address</label>
+          <input id="StoreOwnerAddressText" type="text" size="45"/><br/>
+          <label for="StoreOwnerFirstName">First Name</label>
+          <input id="StoreOwnerFirstNameText" type="text"/><br/>
+          <label for="StoreOwnerLastName">Last Name</label>
+          <input id="StoreOwnerLastNameText" type="text"/><br/>
+          <label for="StoreOwnerEmailAddress">Email</label>
+          <input id="StoreOwnerEmailAddressText" type="text" size="35"/><br/>
+          <button class="btn btn-default btn-addStoreOwner" type="button" id="addStoreOwnerButton" onclick="App.handleAddStoreOwner()">Add Store Owner</button>
+        </div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-push-2">
+        <h1 class="text-center">List All Store Owner</h1><p>
+        <br/>
+      </div>
+    </div>
+
+    <div id="storesRow" class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-push-2">
+        <button class="btn btn-default btn-listStoreOwner" type="button" id="listStoreOwnerButton" onclick="App.handleGetAllStoreOwners()">Show All Store Owner</button><br>
+        <textarea id="StoreOwnerAddressTextArea" rows="6" cols="100"\></textarea>
+      </div>
+    </div>
+  </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -204,7 +204,11 @@ contract OnlineMarketPlace is OnlineMarketPlaceInterface, StoreAdmin {
         // Check to ensure store admin is not store owner
         require(msg.sender != _storeOwnerAddress, "Store admin can't be a store owner!");
         
-        storeOwnerAddresses[storeOwnerAddresses.length++] = _storeOwnerAddress;
+        // If the store owner already exists then don't add it to store owner addresses again
+        if (storeOwners[_storeOwnerAddress].userAddress != _storeOwnerAddress) {
+            storeOwnerAddresses[storeOwnerAddresses.length++] = _storeOwnerAddress;   
+        }
+        
         storeOwners[_storeOwnerAddress] = user(_storeOwnerAddress, _firstName, _lastName, _emailAddress);
         return _storeOwnerAddress;
     }

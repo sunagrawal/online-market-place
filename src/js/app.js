@@ -33,13 +33,13 @@ App = {
 
   bindEvents: function() {
     $(document).on('click', '.btn-register', App.handleRegistered);
+    // $(document).on('click', '.btn-addStoreOwner', App.handleAddStoreOwner);
   },
 
   markRegistered: function() {
     App.contracts.OnlineMarketPlace.deployed().then(function(instance) {
       var onlineMarketPlaceInstance = instance;
       return onlineMarketPlaceInstance.getStoreAdminDetails();
-      alert("Get store admin details function called from address [" + web3.eth.defaultAccount + "]");
     }).then(function(result) {
         if (result[0] == web3.eth.defaultAccount) {
           $('#WelcomeMessage').text("Welcome Store Admin!!!");
@@ -59,7 +59,7 @@ App = {
       if (error) {
         console.log(error);
       }
-
+      alert(1);
       App.contracts.OnlineMarketPlace.deployed().then(function(instance) {
         var onlineMarketPlaceInstance = instance;
 
@@ -77,8 +77,53 @@ App = {
         console.log(err.message);
       });
     });
-  }
+  },
 
+  handleGetAllStoreOwners: function() {
+    App.contracts.OnlineMarketPlace.deployed().then(function(instance) {
+      var onlineMarketPlaceInstance = instance;       
+      document.getElementById("StoreOwnerAddressTextArea").value = "";
+      return onlineMarketPlaceInstance.getAllStoreOwners();
+    }).then(function(result) {
+        for (var i in result) {
+          App.handleGetStoreOwnerDetails(result[i]);
+        }
+    }).catch(function(err) {
+      console.log(err.message);
+    });
+  },
+
+  handleGetStoreOwnerDetails: function(storeOwnerAccount) {
+    App.contracts.OnlineMarketPlace.deployed().then(function(instance) {
+      var onlineMarketPlaceInstance = instance;
+      return onlineMarketPlaceInstance.getStoreOwnerDetails(storeOwnerAccount);
+    }).then(function(result) {
+        document.getElementById("StoreOwnerAddressTextArea").value =  document.getElementById("StoreOwnerAddressTextArea").value + result[0] + ", " + result[1] + ", " + result[2] + ", " + result[3] + "\n";
+   }).catch(function(err) {
+      console.log(err.message);
+    });
+  },
+
+  handleAddStoreOwner: function() {
+    web3.eth.getAccounts(function(error, accounts) {
+      
+      if (error) {
+        console.log(error);
+      }
+
+      App.contracts.OnlineMarketPlace.deployed().then(function(instance) {
+        var onlineMarketPlaceInstance = instance;
+   
+        // Execute adopt as a transaction by sending account
+        return onlineMarketPlaceInstance.addStoreOwner(document.getElementById("StoreOwnerAddressText").value, document.getElementById("StoreOwnerFirstNameText").value,
+            document.getElementById("StoreOwnerLastNameText").value, document.getElementById("StoreOwnerEmailAddressText").value, {from: web3.eth.defaultAccount});
+      }).then(function(result) {
+        $('#StoreOwnerMessage').text("Store owner added successfully! Store owner address [" + document.getElementById("StoreOwnerAddressText").value + "]");
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+    });
+  }
 };
 
 $(function() {
